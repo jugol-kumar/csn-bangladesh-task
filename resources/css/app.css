@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap');
+@import 'tailwindcss';
+
+@theme {
+    --font-sans: 'IBM Plex Sans', ui-sans-serif, system-ui, sans-serif;
+    --font-mono: 'IBM Plex Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+    --color-paper: #f4f1ea;
+    --color-card: #fbfaf6;
+    --color-ink: #1b1b19;
+    --color-mute: #6b675c;
+    --color-rule: #cdc7b8;
+    --color-brick: #b4361b;
+    --color-moss: #2f5d3a;
+}
+
+@layer base {
+    html {
+        background: var(--color-paper);
+        color: var(--color-ink);
+        font-family: var(--font-sans);
+    }
+
+    body {
+        min-height: 100vh;
+        font-size: 15px;
+        line-height: 1.5;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    ::selection {
+        background: var(--color-ink);
+        color: var(--color-paper);
+    }
+
+    :focus-visible {
+        outline: 2px solid var(--color-brick);
+        outline-offset: 2px;
+    }
+}
+
+@layer components {
+    .btn {
+        @apply inline-flex cursor-pointer items-center justify-center gap-2 border border-ink px-4 py-2 text-sm leading-none font-medium transition-colors disabled:cursor-not-allowed disabled:opacity-40;
+    }
+
+    .btn-solid {
+        @apply bg-ink text-paper hover:border-brick hover:bg-brick;
+    }
+
+    .btn-line {
+        @apply bg-transparent text-ink hover:bg-ink hover:text-paper;
+    }
+
+    .btn-danger {
+        @apply border-brick bg-transparent text-brick hover:bg-brick hover:text-paper;
+    }
+
+    .btn-sm {
+        @apply px-3 py-1.5 text-xs;
+    }
+
+    .input {
+        @apply block w-full border border-ink bg-card px-3 py-2 text-sm placeholder:text-mute/70 focus:bg-white focus:outline-none;
+    }
+
+    .label {
+        @apply mb-1 block font-mono text-[11px] tracking-wider text-mute uppercase;
+    }
+
+    .panel {
+        @apply border-2 border-ink bg-card;
+    }
+
+    .tag {
+        @apply inline-block border px-2 py-0.5 font-mono text-[11px] tracking-wider uppercase;
+    }
+
+    .tbl {
+        @apply w-full text-left text-sm;
+    }
+
+    .tbl thead tr {
+        @apply border-b-2 border-ink;
+    }
+
+    .tbl th {
+        @apply px-4 py-3 font-mono text-[11px] font-medium tracking-wider text-mute uppercase;
+    }
+
+    .tbl td {
+        @apply px-4 py-3 align-top;
+    }
+
+    .tbl tbody tr {
+        @apply border-b border-dashed border-rule;
+    }
+
+    .tbl tbody tr:last-child {
+        @apply border-b-0;
+    }
+
+    .hatch {
+        background-image: repeating-linear-gradient(135deg, transparent 0 7px, rgb(27 27 25 / 0.07) 7px 8px);
+    }
+}
